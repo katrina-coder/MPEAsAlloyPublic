@@ -159,7 +159,7 @@ class optimiser:
                   
                 
             print('\n')
-            print('Predicted %f Current density' % (self.models['RF_log icorr'].predict(best_datapoint.formatForInput())[0]))
+            print('Predicted %f Current density' % (self.models['RF_icorr'].predict(best_datapoint.formatForInput())[0]))
             print('Predicted %f Corrosion potential' % (self.models['RF_Ecorr'].predict(best_datapoint.formatForInput())[0]))
             print('Predicted %f Pitting potential' % (self.models['RF_Pcorr'].predict(best_datapoint.formatForInput())[0]))
             print()
