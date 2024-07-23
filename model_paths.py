@@ -6,7 +6,7 @@ import warnings
 
 
 if 'google.colab' in str(get_ipython()):
-    model_dir = "MPEAsPublic/models"
+    model_dir = "MPEAsAlloyPublic/models"
 else:
     model_dir = "models"
     
