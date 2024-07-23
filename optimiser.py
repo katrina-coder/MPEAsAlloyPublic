@@ -3,7 +3,7 @@ import numpy as np
 from scipy.stats import truncnorm
 import pickle
 if 'google.colab' in str(get_ipython()):
-    from MPEAsPublic.model_paths import models
+    from MPEAsAlloyPublic.model_paths import models
 else:
     from model_paths import models
 
