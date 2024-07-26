@@ -77,7 +77,7 @@ class scanSettings:
        'Cu', 'Fe', 'Ga', 'Hf', 'La', 'Mg', 'Mn', 'Mo', 'Nb', 'Ni', 'Si', 'Sn',
        'Ta', 'Ti', 'V', 'W', 'Y', 'Zn', 'Zr'], [0])
 
-            self.concentration_inputs = dict.fromkeys(['Concentration in M'], [0.6])
+            self.concentration_inputs = dict.fromkeys('Concentration in M', 0.6)
 
 
         if self.mode == 'Corrosion':
