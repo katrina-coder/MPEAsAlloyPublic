@@ -2,14 +2,18 @@ from copy import deepcopy
 import numpy as np
 from scipy.stats import truncnorm
 import pickle
+import joblib
+import warnings
+warnings.filterwarnings('ignore')
+
+
 # if 'google.colab' in str(get_ipython()):
 #     from MPEAsAlloyPublic.model_paths import models
 # else:
 #     from model_paths import models
-import joblib
-import pickle
-import warnings
-warnings.filterwarnings('ignore')
+
+
+
 
 model_dir = "/content/drive/MyDrive/MPEAs"
 
@@ -171,9 +175,9 @@ class optimiser:
                   
                 
             print('\n')
-            print('Predicted %f Current density' % (self.models['RF_icorr'].predict(best_datapoint.formatForInput())[0]))
-            print('Predicted %f Corrosion potential' % (self.models['RF_Ecorr'].predict(best_datapoint.formatForInput())[0]))
-            print('Predicted %f Pitting potential' % (self.models['RF_Pcorr'].predict(best_datapoint.formatForInput())[0]))
+            print('Predicted %f Current density' % (self.models['Current density'].predict(best_datapoint.formatForInput())[0]))
+            print('Predicted %f Corrosion potential' % (self.models['Corrosion potential'].predict(best_datapoint.formatForInput())[0]))
+            print('Predicted %f Pitting potential' % (self.models['Pitting potential'].predict(best_datapoint.formatForInput())[0]))
             print()
             print('=============================================')
             print()
