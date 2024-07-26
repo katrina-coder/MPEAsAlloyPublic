@@ -71,7 +71,7 @@ def generateMainGUI(mode):
 
     concentration_inputs_VBox = [widgets.HTML("<b>Electrolyte concentration (M)    </b>")]
     for key in settings.concentration_inputs:
-        key_label = widgets.Label(f"{key}:", layout=Layout(width="70px"))
+        key_label = widgets.Label(f"{key}:", layout=Layout(width="120px"))
         lower_bound_box = widgets.FloatText(value=settings.concentration_inputs[key][0], layout=default_input_box_layout)
         concentration_inputs_VBox.append(HBox([key_label, lower_bound_box]))
         GUI_inputs["concentration_inputs"][key] = [lower_bound_box]
