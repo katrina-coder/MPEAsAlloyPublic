@@ -181,9 +181,9 @@ class optimiser:
                   
                 
             print('\n')
-            print('Predicted Current density ' + str(self.models['Current density'].predict(best_datapoint.formatForInput())[0]) + ' microA/cm2')
-            print('Predicted Corrosion potential ' +  str(self.models['Corrosion potential'].predict(best_datapoint.formatForInput())[0]) + ' mV vs. SCE')
-            print('Predicted %f Pitting potential ' + str(self.models['Pitting potential'].predict(best_datapoint.formatForInput())[0])+ ' mV vs. SCE')
+            print('Predicted Current density: ' + str(self.models['Current density'].predict(best_datapoint.formatForInput())[0]) + ' microA/cm2')
+            print('Predicted Corrosion potential: ' +  str(self.models['Corrosion potential'].predict(best_datapoint.formatForInput())[0]) + ' mV vs. SCE')
+            print('Predicted Pitting potential: ' + str(self.models['Pitting potential'].predict(best_datapoint.formatForInput())[0])+ ' mV vs. SCE')
             print()
             print('=============================================')
             print()
