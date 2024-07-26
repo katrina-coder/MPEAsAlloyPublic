@@ -168,10 +168,16 @@ class optimiser:
             
             print()
             print('Chemical composition: ')
-            for index, key in enumerate(final_alloy):
-                print(key+ ":" + str(final_alloy[key]), end="  ")
+          
+            desired_keys = ('Al', 'B', 'Be', 'Co', 'Cr','Cu', 'Fe', 'Ga', 'Hf', 'La', 'Mg', 'Mn', 'Mo', 'Nb', 'Ni', 'Si', 'Sn',
+                           'Ta', 'Ti', 'V', 'W', 'Y', 'Zn', 'Zr')
+            cc = {k: final_alloy[k] for k in desired_keys}
+   
+            for index, key in enumerate(cc):
+                print(key+ ":" + str(cc[key]), end="  ")
                 if (index+1)%10 ==0:
                     print("")
+                          
                   
                 
             print('\n')
