@@ -51,7 +51,7 @@ def generateMainGUI(mode):
     INPUT_BOX_WIDTH = "70px"
     INPUT_BOX_HEIGHT = "20px"
 
-    LEFT_RIGHT_PADDING = Layout(margin="0px 100px 0px 0px")
+    LEFT_RIGHT_PADDING = Layout(margin="0px 0px 0px 100px")
     BOTTOM_PADDING = Layout(margin="0px 0px 5px 0px")
 
     default_input_box_layout = Layout(width=INPUT_BOX_WIDTH, height=INPUT_BOX_HEIGHT)
