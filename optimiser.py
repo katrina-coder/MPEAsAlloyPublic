@@ -103,6 +103,7 @@ class scanSettings:
                     [0] , [0] , [0] , [0] , [0]]))
         
             self.range_based_inputs['Al'] = [100 - sum(sum(row) for row in list(self.range_based_inputs.values())[1:])]
+            self.concentration_inputs = dict.fromkeys(['Concentration in M'], [0.6])
             
         
         
