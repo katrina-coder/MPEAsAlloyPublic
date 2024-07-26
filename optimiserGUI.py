@@ -100,9 +100,9 @@ def generateMainGUI(mode):
     first_column = VBox(range_based_inputs_VBox)
     
 
-    second_column = VBox([VBox(categorical_inputs_VBox, layout=BOTTOM_PADDING)])
+    second_column = VBox([VBox(categorical_inputs_VBox)])
 
-    third_column = VBox(concentration_inputs_VBox)
+    third_column = VBox(concentration_inputs_VBox, layout=BOTTOM_PADDING)
 
     
     display(HBox([first_column, second_column, third_column]))
