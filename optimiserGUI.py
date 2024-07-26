@@ -61,7 +61,7 @@ def generateMainGUI(mode):
                   "range_based_inputs": {}
                   }
 
-    range_based_inputs_VBox = [widgets.HTML("Compositional range (wt. %):    ")]
+    range_based_inputs_VBox = [widgets.HTML("Compositional range (at. %):    ")]
     for key in settings.range_based_inputs:
         key_label = widgets.Label(f"{key}:", layout=Layout(width=KEY_LABEL_WIDTH))
         lower_bound_box = widgets.FloatText(value=settings.range_based_inputs[key][0], layout=default_input_box_layout)
