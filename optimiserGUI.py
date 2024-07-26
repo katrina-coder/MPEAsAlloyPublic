@@ -51,7 +51,7 @@ def generateMainGUI(mode):
     INPUT_BOX_WIDTH = "70px"
     INPUT_BOX_HEIGHT = "20px"
 
-    LEFT_RIGHT_PADDING = Layout(margin="0px 100px 0px 100px")
+    LEFT_RIGHT_PADDING = Layout(margin="0px 150px 0px 50px")
     BOTTOM_PADDING = Layout(margin="0px 0px 5px 0px")
 
     default_input_box_layout = Layout(width=INPUT_BOX_WIDTH, height=INPUT_BOX_HEIGHT)
@@ -61,7 +61,7 @@ def generateMainGUI(mode):
                   "range_based_inputs": {}
                   }
 
-    range_based_inputs_VBox = [widgets.HTML("<b>Compositional range (wt. %)    </b>")]
+    range_based_inputs_VBox = [widgets.HTML("Compositional range (wt. %):    ")]
     for key in settings.range_based_inputs:
         key_label = widgets.Label(f"{key}:", layout=Layout(width=KEY_LABEL_WIDTH))
         lower_bound_box = widgets.FloatText(value=settings.range_based_inputs[key][0], layout=default_input_box_layout)
@@ -69,7 +69,7 @@ def generateMainGUI(mode):
         GUI_inputs["range_based_inputs"][key] = [lower_bound_box]
 
 
-    concentration_inputs_VBox = [widgets.HTML("<b>Electrolyte concentration (M)    </b>")]
+    concentration_inputs_VBox = [widgets.HTML("Electrolyte concentration: ")]
     for key in settings.concentration_inputs:
         key_label = widgets.Label(f"{key}:", layout=Layout(width="120px"))
         lower_bound_box = widgets.FloatText(value=settings.concentration_inputs[key][0], layout=default_input_box_layout)
