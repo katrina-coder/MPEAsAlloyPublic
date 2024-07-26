@@ -36,7 +36,7 @@ class MPEAsDatapoint:
             self.al_balance = False
             
 
-        my_input = sum([*self.concentration_inputs.values()]) + elec + [100 - sum([*self.range_based_inputs.values()][1:])] + [*self.range_based_inputs.values()][1:] 
+        my_input = sum(*self.concentration_inputs.values()) + elec + [100 - sum([*self.range_based_inputs.values()][1:])] + [*self.range_based_inputs.values()][1:] 
                    # [*self.range_based_inputs.values()] 
         
         
