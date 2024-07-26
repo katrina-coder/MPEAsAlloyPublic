@@ -6,8 +6,8 @@ import warnings
 
 
 if 'google.colab' in str(get_ipython()):
-    #model_dir = "MPEAsAlloyPublic/models"
-    model_dir = "/content/drive/MyDrive/MPEAs"
+    model_dir = "MPEAsAlloyPublic/models"
+    #model_dir = "/content/drive/MyDrive/MPEAs"
 else:
     model_dir = "models"
     
