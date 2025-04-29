@@ -35,12 +35,17 @@ class MPEAsDatapoint:
     def formatForInput(self):
         #ht = [1 if [i+1] in [*self.categorical_inputs.values()] else 0 for i in range(6)]
         for key in self.categorical_inputs:
-            elec = self.categorical_inputs[key]
+            if key=='Electrolyte':
+                elec = self.categorical_inputs[key]
+            if key=='Microstructure':
+                micro = self.categorical_inputs[key]
+                    
+            
         if sum([*self.range_based_inputs.values()]) != 100.0:
             self.al_balance = False
             
 
-        my_input = [sum(*self.concentration_inputs.values())] + elec + [100 - sum([*self.range_based_inputs.values()][1:])] + [*self.range_based_inputs.values()][1:] 
+        my_input = [sum(*self.concentration_inputs.values())] + micro + elec + [100 - sum([*self.range_based_inputs.values()][1:])] + [*self.range_based_inputs.values()][1:] 
                    # [*self.range_based_inputs.values()] 
         
         
@@ -93,10 +98,13 @@ class scanSettings:
                 'Pitting potential': 250
             }
             self.categorical_inputs = {
-                'Electrolyte': [1]
+                'Electrolyte': [1],
+                'Microstructure': [1] # default to FCC
             }
             self.categorical_inputs_info = {
-                'Electrolyte': {'span': [1, 2, 3, 4, 5, 6,7], 'tag': ['H2SO4', 'HCl','HNO3', 'KOH', 'NaCl','NaOH', 'Seawater']}}
+                'Electrolyte': {'span': [1, 2, 3, 4, 5, 6,7], 'tag': ['H2SO4', 'HCl','HNO3', 'KOH', 'NaCl','NaOH', 'Seawater']},
+                 'Microstructure': {'span': [1, 2, 3, 4], 'tag': ['FCC', 'BCC', 'HCP', 'IM']}
+          }
             
 #             self.range_based_inputs = dict(zip(
 #                 ['Mg', 'Nd', 'Ce', 'La', 'Zn', 'Sn', 'Al', 'Ca', 'Zr', 'Ag', 'Ho', 'Mn',
@@ -157,7 +165,7 @@ class optimiser:
             #print('predicted %f Tensile Strength' % (1.25*self.models['tensile'].predict(best_datapoint.formatForInput())[0]))
         elif self.mode == 'Corrosion':
             final_alloy  = dict(zip(
-                ['Concentration in M','H2SO4', 'HCl','HNO3', 'KOH', 'NaCl','NaOH', 'Seawater','Al', 'B', 'Be', 'Co', 'Cr',
+                ['Concentration in M','FCC', 'BCC', 'HCP', 'IM', 'H2SO4', 'HCl','HNO3', 'KOH', 'NaCl','NaOH', 'Seawater','Al', 'B', 'Be', 'Co', 'Cr',
        'Cu', 'Fe', 'Ga', 'Hf', 'La', 'Mg', 'Mn', 'Mo', 'Nb', 'Ni', 'Si', 'Sn',
        'Ta', 'Ti', 'V', 'W', 'Y', 'Zn', 'Zr'],
                 best_datapoint.formatForInput().reshape(-1,)))
@@ -181,6 +189,8 @@ class optimiser:
                   
                 
             print('\n')
+            print('Electrolyte: ' + [k for k, v in final_alloy.items() if v == 1 and k in ['H2SO4', 'HCl', 'HNO3', 'KOH', 'NaCl', 'NaOH', 'Seawater']][0])
+            print('Microstructure: ' + [k for k, v in final_alloy.items() if v == 1 and k in ['FCC', 'BCC', 'HCP', 'IM']][0])
             print('Predicted Current density: ' + str(self.models['Current density'].predict(best_datapoint.formatForInput())[0]) + ' microA/cm2')
             print('Predicted Corrosion potential: ' +  str(self.models['Corrosion potential'].predict(best_datapoint.formatForInput())[0]) + ' mV vs. SCE')
             print('Predicted Pitting potential: ' + str(self.models['Pitting potential'].predict(best_datapoint.formatForInput())[0])+ ' mV vs. SCE')
