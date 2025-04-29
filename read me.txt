@@ -1,3 +1,12 @@
-This repository contains *only feed forward model* predictions. 
+This repository contains *machine learning (ML) models* developed for predicting the corrosion properties of Multi-Principal Element Alloys (MPEAs). The models are trained on a dataset published on Mendeley and are saved here for retrieval and use in corrosion property predictions.
 
-Database is not published here, trained models with the database are saved and used for prediction.
+*Getting Started*
+
+The ML models can be accessed and used via a Google Colab notebook, which provides an interactive environment to load models, prepare data, and make predictions.
+
+*Using Google Colab*
+
+Open the Colab notebook: MPEA Corrosion Prediction.
+Follow the instructions in the notebook to load the models and input your data.
+Run the cells to generate predictions.
+The Colab notebook includes all necessary dependencies and instructions for preparing input data in the correct format.
