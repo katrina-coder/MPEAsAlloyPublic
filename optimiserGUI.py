@@ -53,6 +53,8 @@ def generateMainGUI(mode):
 
     LEFT_RIGHT_PADDING = Layout(margin="0px 0px 0px 100px")
     BOTTOM_PADDING = Layout(margin="0px 0px 5px 0px")
+    THIRD_COLUMN_PADDING = Layout(margin="0px 0px 5px 100px")
+    FOURTH_COLUMN_PADDING = Layout(margin="0px 0px 5px 100px")
 
     default_input_box_layout = Layout(width=INPUT_BOX_WIDTH, height=INPUT_BOX_HEIGHT)
 
@@ -79,21 +81,33 @@ def generateMainGUI(mode):
         
 
     categorical_inputs_VBox = [widgets.HTML("<b>  </b>")]
+    # Only include Electrolyte in the second column
     for key in settings.categorical_inputs:
-        categorical_inputs_VBox.append(widgets.HTML(f'{key}:'))
-        GUI_inputs["categorical_inputs"][key] = []
-        options = []
-        for i, value in enumerate(settings.categorical_inputs_info[key]['tag']):
-            options.append(value)
-        value_checkbox = widgets.RadioButtons(options=options,
+        if key=='Electrolyte':
+            categorical_inputs_VBox.append(widgets.HTML(f'{key}:'))
+            GUI_inputs["categorical_inputs"][key] = []
+            options = []
+            for i, value in enumerate(settings.categorical_inputs_info[key]['tag']):
+                options.append(value)
+            value_checkbox = widgets.RadioButtons(options=options,
                                              description = '',
                                               disabled=False,
                                               indent=False)
-        
-#             if value in settings.categorical_inputs[key]:
-#                 value_checkbox.value = True
-        categorical_inputs_VBox.append(value_checkbox)
-        GUI_inputs["categorical_inputs"][key].append(value_checkbox)
+            categorical_inputs_VBox.append(value_checkbox)
+            GUI_inputs["categorical_inputs"][key].append(value_checkbox)
+
+    # Add Microstructure to the third column
+    microstructure_inputs_VBox = [widgets.HTML("Microstructure: ")]
+    for key in settings.categorical_inputs:
+        if key == 'Microstructure':
+            GUI_inputs["categorical_inputs"][key] = []
+            options = settings.categorical_inputs_info[key]['tag']
+            value_radio = widgets.RadioButtons(options=options,
+                                               description='',
+                                               disabled=False,
+                                               indent=False)
+            microstructure_inputs_VBox.append(value_radio)
+            GUI_inputs["categorical_inputs"][key].append(value_radio)
 
         
 
@@ -101,11 +115,11 @@ def generateMainGUI(mode):
     
 
     second_column = VBox([VBox(categorical_inputs_VBox, layout =LEFT_RIGHT_PADDING )])
-
-    third_column = VBox(concentration_inputs_VBox, layout=BOTTOM_PADDING)
+    third_column = VBox(microstructure_inputs_VBox, layout=THIRD_COLUMN_PADDING)
+    forth_column = VBox(concentration_inputs_VBox, layout=FOURTH_COLUMN_PADDING)
 
     
-    display(HBox([first_column, second_column, third_column]))
+    display(HBox([first_column, second_column, third_column, fourth_column]))
 
     run_scan_button = widgets.Button(description="Run")
     display(run_scan_button)
