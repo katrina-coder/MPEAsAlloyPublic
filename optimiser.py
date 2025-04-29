@@ -7,20 +7,20 @@ import warnings
 warnings.filterwarnings('ignore')
 
 
-# if 'google.colab' in str(get_ipython()):
-#     from MPEAsAlloyPublic.model_paths import models
-# else:
-#     from model_paths import models
+if 'google.colab' in str(get_ipython()):
+          from MPEAsAlloyPublic.model_paths import models
+else:
+          from model_paths import models
 
 
 
 
-model_dir = "/content/drive/MyDrive/MPEAs"
+#model_dir = "/content/drive/MyDrive/MPEAs"
 
-models = {"Current density": joblib.load(f"{model_dir}/RF_icorr"),
-          "Corrosion potential": joblib.load(f"{model_dir}/RF_Ecorr"),
-          "Pitting potential": joblib.load(f"{model_dir}/RF_Pcorr")
-          }
+#models = {"Current density": joblib.load(f"{model_dir}/RF_icorr"),
+    #      "Corrosion potential": joblib.load(f"{model_dir}/RF_Ecorr"),
+    #      "Pitting potential": joblib.load(f"{model_dir}/RF_Pcorr")
+     #     }
 
 
 
