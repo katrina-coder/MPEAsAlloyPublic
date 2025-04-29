@@ -116,7 +116,7 @@ def generateMainGUI(mode):
 
     second_column = VBox([VBox(categorical_inputs_VBox, layout =LEFT_RIGHT_PADDING )])
     third_column = VBox(microstructure_inputs_VBox, layout=THIRD_COLUMN_PADDING)
-    forth_column = VBox(concentration_inputs_VBox, layout=FOURTH_COLUMN_PADDING)
+    fourth_column = VBox(concentration_inputs_VBox, layout=FOURTH_COLUMN_PADDING)
 
     
     display(HBox([first_column, second_column, third_column, fourth_column]))
