@@ -181,9 +181,7 @@ class optimiser:
                   
                 
             print('\n')
-            print('Electrolyte: ' + [k for k, v in final_alloy.items() if v == 1 and k in ['H2SO4', 'HCl', 'HNO3', 'KOH', 'NaCl', 'NaOH', 'Seawater']][0])
-            print('Microstructure: ' + [k for k, v in final_alloy.items() if v == 1 and k in ['FCC', 'BCC', 'HCP', 'IM']][0])
-            
+            #print('Electrolyte: ' + [k for k, v in final_alloy.items() if v == 1 and k in ['H2SO4', 'HCl', 'HNO3', 'KOH', 'NaCl', 'NaOH', 'Seawater']][0])
             print('Predicted Current density: ' + str(round(self.models['Current density'].predict(best_datapoint.formatForInput())[0], 1)) + ' microA/cm2')
             print('Predicted Corrosion potential: ' + str(round(self.models['Corrosion potential'].predict(best_datapoint.formatForInput())[0], 1)) + ' mV vs. SCE')
             print('Predicted Pitting potential: ' + str(round(self.models['Pitting potential'].predict(best_datapoint.formatForInput())[0], 1)) + ' mV vs. SCE')
